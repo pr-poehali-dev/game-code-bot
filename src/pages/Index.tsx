@@ -14,6 +14,7 @@ interface GeneratedGame {
   code: string;
   timestamp: Date;
   complexity: number;
+  isFavorite?: boolean;
 }
 
 const EXAMPLE_PROMPTS = [
