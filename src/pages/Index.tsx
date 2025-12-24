@@ -288,14 +288,29 @@ const Index = () => {
                       onClick={() => setCurrentGame(game)}
                     >
                       <div className="flex justify-between items-start mb-2">
-                        <p className="font-bold">{game.prompt}</p>
-                        <Badge variant="outline" className="border-primary text-primary">
-                          Ур. {game.complexity}
-                        </Badge>
+                        <div className="flex-1">
+                          <p className="font-bold">{game.prompt}</p>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            {game.timestamp.toLocaleString('ru-RU')}
+                          </p>
+                        </div>
+                        <div className="flex gap-2 items-center">
+                          <Badge variant="outline" className="border-primary text-primary">
+                            Ур. {game.complexity}
+                          </Badge>
+                          <Button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              saveToLibrary(game);
+                            }}
+                            size="sm"
+                            variant="ghost"
+                            className="h-8 w-8 p-0 hover:bg-primary/20"
+                          >
+                            <Icon name="Heart" size={16} />
+                          </Button>
+                        </div>
                       </div>
-                      <p className="text-xs text-muted-foreground">
-                        {game.timestamp.toLocaleString('ru-RU')}
-                      </p>
                     </div>
                   ))}
                 </div>
