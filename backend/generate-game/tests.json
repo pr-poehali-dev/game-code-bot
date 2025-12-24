@@ -1,0 +1,29 @@
+{
+  "tests": [
+    {
+      "name": "Generate simple game",
+      "method": "POST",
+      "body": {
+        "prompt": "Простая игра крестики-нолики",
+        "complexity": 1
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "code": "string",
+        "prompt": "string",
+        "complexity": "number"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Missing prompt error",
+      "method": "POST",
+      "body": {},
+      "expectedStatus": 400,
+      "expectedBody": {
+        "error": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
