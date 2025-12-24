@@ -64,8 +64,14 @@ const Index = () => {
   const [activeTab, setActiveTab] = useState('generator');
 
   const generateGame = async () => {
-    if (!prompt.trim()) {
+    const trimmedPrompt = prompt.trim();
+    if (!trimmedPrompt) {
       toast.error('Введите описание игры');
+      return;
+    }
+    
+    if (trimmedPrompt.length < 3) {
+      toast.error('Опишите игру хотя бы в 3 символах');
       return;
     }
 
